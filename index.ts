@@ -81,15 +81,7 @@ do {
         `${Math.pow(answer.firsnum, answer.secondnum)}`
       )}`
     );
-  } 
-  // else if (answer.operator === chalk.yellowBright("Sqrt")) {
-  //   log(
-  //     `${chalk.red(`Square Root:`)} ${chalk.blue(
-  //       `${Math.sqrt(answer.firsnum)}`
-  //     )}`
-  //   );
-  // }
-  else {
+  } else {
     log(`${chalk.red(`Please Select Invalid Operator`)}`);
   }
 
