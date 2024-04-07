@@ -34,6 +34,7 @@ do {
         chalk.red("Division"),
         chalk.blueBright("Expontential"),
         chalk.cyan("Modules"),
+        chalk.yellowBright("Sqrt"),
       ],
     },
     {
@@ -80,7 +81,15 @@ do {
         `${Math.pow(answer.firsnum, answer.secondnum)}`
       )}`
     );
-  } else {
+  } 
+  // else if (answer.operator === chalk.yellowBright("Sqrt")) {
+  //   log(
+  //     `${chalk.red(`Square Root:`)} ${chalk.blue(
+  //       `${Math.sqrt(answer.firsnum)}`
+  //     )}`
+  //   );
+  // }
+  else {
     log(`${chalk.red(`Please Select Invalid Operator`)}`);
   }
 
