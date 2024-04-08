@@ -28,6 +28,7 @@ do {
                 chalk.red("Division"),
                 chalk.blueBright("Expontential"),
                 chalk.cyan("Modules"),
+                chalk.yellowBright("Sqrt"),
             ],
         },
         {
