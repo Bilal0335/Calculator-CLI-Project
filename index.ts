@@ -4,12 +4,37 @@ import chalk from "chalk";
 import chalkAnimation from "chalk-animation";
 const log = console.log;
 
-async function calAni() {
-  let titleCal = chalkAnimation.rainbow("\n\t\tSimple Calculator CLI\t\t\n");
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  titleCal.stop();
-}
-await calAni();
+// class Calculator {
+//   welcomMessage() {
+//     let animation = chalkAnimation.karaoke(`
+//       Hey get ready for some math magic with our calculator.     xD 
+      
+//                        _____________________
+//                       |  _________________  |
+//                       | | JO           0. | |
+//                       | |_________________| |
+//                       |                     |
+//                       |  ___ ___ ___   ___  |
+//                       | | 7 | 8 | 9 | | + | |
+//                       | |___|___|___| |___| |
+//                       | | 4 | 5 | 6 | | - | |
+//                       | |___|___|___| |___| |
+//                       | | 1 | 2 | 3 | | x | |
+//                       | |___|___|___| |___| |
+//                       | | . | 0 | = | | / | |
+//                       | |___|___|___| |___| |
+//                       |_____________________|
+    
+                       
+//     `);
+//     setTimeout((): void => {
+//       animation.stop();
+//     }, 3000);
+//   }
+// }
+
+// const myCalculator = new Calculator();
+// myCalculator.welcomMessage();
 
 let playAgain;
 
@@ -28,13 +53,11 @@ do {
       type: "list",
       name: "operator",
       choices: [
-        chalk.green("Addition"),
-        chalk.yellow("Subtraction"),
-        chalk.gray("Multiplication"),
-        chalk.red("Division"),
-        chalk.blueBright("Expontential"),
-        chalk.cyan("Modules"),
-        chalk.yellowBright("Sqrt"),
+        chalk.green("+ Addition"),
+        chalk.yellow("- Subtraction"),
+        chalk.gray("* Multiplication"),
+        chalk.red("/ Division"),
+        chalk.blue("^ Power")
       ],
     },
     {
@@ -45,39 +68,33 @@ do {
   ]);
 
   //Condtional Statement
-  if (answer.operator === chalk.green("Addition")) {
+  if (answer.operator === chalk.green("+ Addition")) {
     log(
       `${chalk.green(`Addition:`)} ${chalk.blue(
         `${answer.firsnum + answer.secondnum}`
       )}`
     );
-  } else if (answer.operator === chalk.yellow("Subtraction")) {
+  } else if (answer.operator === chalk.yellow("- Subtraction")) {
     log(
       `${chalk.yellow(`Substraction:`)} ${chalk.blue(
         `${answer.firsnum - answer.secondnum}`
       )}`
     );
-  } else if (answer.operator === chalk.gray("Multiplication")) {
+  } else if (answer.operator === chalk.gray("* Multiplication")) {
     log(
       `${chalk.blueBright(`Multiplication:`)} ${chalk.blue(
         `${answer.firsnum * answer.secondnum}`
       )}`
     );
-  } else if (answer.operator === chalk.red("Division")) {
+  } else if (answer.operator === chalk.red("/ Division")) {
     log(
       `${chalk.red(`Division:`)} ${chalk.blue(
         `${(answer.firsnum / answer.secondnum).toFixed(4)}`
       )}`
     );
-  } else if (answer.operator === chalk.cyan("Modules")) {
+  } else if (answer.operator === chalk.blue("^ Power")) {
     log(
-      `${chalk.red(`Modules:`)} ${chalk.blue(
-        `${answer.firsnum % answer.secondnum}`
-      )}`
-    );
-  } else if (answer.operator === chalk.blueBright("Expontential")) {
-    log(
-      `${chalk.red(`Expontential:`)} ${chalk.blue(
+      `${chalk.red(`Power:`)} ${chalk.blue(
         `${Math.pow(answer.firsnum, answer.secondnum)}`
       )}`
     );
