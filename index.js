@@ -1,39 +1,25 @@
 #! /usr/bin/env node
 import inquirer from "inquirer";
 import chalk from "chalk";
+import chalkAnimation from "chalk-animation";
 const log = console.log;
-// class Calculator {
-//   welcomMessage() {
-//     let animation = chalkAnimation.karaoke(`
-//       Hey get ready for some math magic with our calculator.     xD 
-//                        _____________________
-//                       |  _________________  |
-//                       | | JO           0. | |
-//                       | |_________________| |
-//                       |                     |
-//                       |  ___ ___ ___   ___  |
-//                       | | 7 | 8 | 9 | | + | |
-//                       | |___|___|___| |___| |
-//                       | | 4 | 5 | 6 | | - | |
-//                       | |___|___|___| |___| |
-//                       | | 1 | 2 | 3 | | x | |
-//                       | |___|___|___| |___| |
-//                       | | . | 0 | = | | / | |
-//                       | |___|___|___| |___| |
-//                       |_____________________|
-//     `);
-//     setTimeout((): void => {
-//       animation.stop();
-//     }, 3000);
-//   }
-// }
-// const myCalculator = new Calculator();
-// myCalculator.welcomMessage();
+const sleep = () => {
+    return new Promise((res) => {
+        setTimeout(res, 3000);
+    });
+};
+async function welcome() {
+    await sleep();
+    rainbowTitle.stop();
+}
+let rainbowTitle = chalkAnimation.rainbow(`
+\t---------------------------------\n\t   Welcome to Simple Calcualtor   \n\t---------------------------------`); // Animation starts
+await welcome();
 let playAgain;
 do {
     const answer = await inquirer.prompt([
         {
-            message: chalk.black("Enter Your First Number:"),
+            message: chalk.black.bold("Enter Your First Number:"),
             type: "number",
             name: "firsnum",
         },
@@ -50,7 +36,7 @@ do {
             ],
         },
         {
-            message: chalk.black("Enter Your Second Number:"),
+            message: chalk.black.bold("Enter Your Second Number:"),
             type: "number",
             name: "secondnum",
         },
