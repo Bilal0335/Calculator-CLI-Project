@@ -20,8 +20,16 @@ do {
     const answer = await inquirer.prompt([
         {
             message: chalk.black.bold("Enter Your First Number:"),
-            type: "number",
+            type: "input",
             name: "firsnum",
+            validate: (value) => {
+                if (value.trim() !== "") {
+                    return true;
+                }
+                else {
+                    return `Please enter account Number`;
+                }
+            },
         },
         {
             message: chalk.bgRed.white.bold.italic("Select one of the operator to perform action"),
@@ -39,23 +47,33 @@ do {
             message: chalk.black.bold("Enter Your Second Number:"),
             type: "number",
             name: "secondnum",
+            validate: (value) => {
+                if (value.trim() !== "") {
+                    return true;
+                }
+                else {
+                    return `Please enter account Number`;
+                }
+            },
         },
     ]);
+    const firsNum = Number(answer.firsNum);
+    const secNum = Number(answer.secondnum);
     //Condtional Statement
     if (answer.operator === chalk.green("+ Addition")) {
-        log(`${chalk.green(`Addition:`)} ${chalk.blue(`${answer.firsnum + answer.secondnum}`)}`);
+        log(`${chalk.green(`Addition:`)} ${chalk.blue(`${firsNum + secNum}`)}`);
     }
     else if (answer.operator === chalk.yellow("- Subtraction")) {
-        log(`${chalk.yellow(`Substraction:`)} ${chalk.blue(`${answer.firsnum - answer.secondnum}`)}`);
+        log(`${chalk.yellow(`Substraction:`)} ${chalk.blue(`${firsNum - secNum}`)}`);
     }
     else if (answer.operator === chalk.gray("* Multiplication")) {
-        log(`${chalk.blueBright(`Multiplication:`)} ${chalk.blue(`${answer.firsnum * answer.secondnum}`)}`);
+        log(`${chalk.blueBright(`Multiplication:`)} ${chalk.blue(`${firsNum * secNum}`)}`);
     }
     else if (answer.operator === chalk.red("/ Division")) {
-        log(`${chalk.red(`Division:`)} ${chalk.blue(`${(answer.firsnum / answer.secondnum).toFixed(4)}`)}`);
+        log(`${chalk.red(`Division:`)} ${chalk.blue(`${(firsNum / secNum).toFixed(4)}`)}`);
     }
     else if (answer.operator === chalk.blue("^ Power")) {
-        log(`${chalk.red(`Power:`)} ${chalk.blue(`${Math.pow(answer.firsnum, answer.secondnum)}`)}`);
+        log(`${chalk.red(`Power:`)} ${chalk.blue(`${Math.pow(firsNum, secNum)}`)}`);
     }
     else {
         log(`${chalk.red(`Please Select Invalid Operator`)}`);
