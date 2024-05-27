@@ -69,6 +69,9 @@ do {
       )}`
     );
   } else if (answer.operator === chalk.red("/ Division")) {
+    if (answer.secondnum === 0) {
+      throw new Error("Division by zero is not allowed.");
+    }
     log(
       `${chalk.red(`Division:`)} ${chalk.blue(
         `${(answer.firsnum / answer.secondnum).toFixed(4)}`
