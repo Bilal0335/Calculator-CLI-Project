@@ -20,8 +20,9 @@ do {
     const answer = await inquirer.prompt([
         {
             message: chalk.black.bold("Enter Your First Number:"),
-            type: "number",
+            type: "input",
             name: "firsnum",
+            validate: (value) => !isNaN(Number(value)) ? true : "Please enter a valid number",
         },
         {
             message: chalk.bgRed.white.bold.italic("Select one of the operator to perform action"),
@@ -32,13 +33,14 @@ do {
                 chalk.yellow("- Subtraction"),
                 chalk.gray("* Multiplication"),
                 chalk.red("/ Division"),
-                chalk.blue("^ Power")
+                chalk.blue("^ Power"),
             ],
         },
         {
             message: chalk.black.bold("Enter Your Second Number:"),
-            type: "number",
+            type: "input",
             name: "secondnum",
+            validate: (value) => !isNaN(Number(value)) ? true : "Please enter a valid number",
         },
     ]);
     //Condtional Statement

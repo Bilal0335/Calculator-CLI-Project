@@ -6,10 +6,10 @@ const log = console.log;
 
 const sleep = () => {
   return new Promise((res) => {
-      setTimeout(res, 3000);
-  })
-}
-async function welcome() {   
+    setTimeout(res, 3000);
+  });
+};
+async function welcome() {
   await sleep();
   rainbowTitle.stop();
 }
@@ -17,15 +17,16 @@ let rainbowTitle = chalkAnimation.rainbow(`
 \t---------------------------------\n\t   Welcome to Simple Calcualtor   \n\t---------------------------------`); // Animation starts
 await welcome();
 
-
 let playAgain;
 
 do {
   const answer = await inquirer.prompt([
     {
       message: chalk.black.bold("Enter Your First Number:"),
-      type: "number",
+      type: "input",
       name: "firsnum",
+      validate: (value) =>
+        !isNaN(Number(value)) ? true : "Please enter a valid number",
     },
 
     {
@@ -39,13 +40,15 @@ do {
         chalk.yellow("- Subtraction"),
         chalk.gray("* Multiplication"),
         chalk.red("/ Division"),
-        chalk.blue("^ Power")
+        chalk.blue("^ Power"),
       ],
     },
     {
       message: chalk.black.bold("Enter Your Second Number:"),
-      type: "number",
+      type: "input",
       name: "secondnum",
+      validate: (value) =>
+        !isNaN(Number(value)) ? true : "Please enter a valid number",
     },
   ]);
 
